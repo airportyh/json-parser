@@ -1,1 +1,2 @@
 gcc parse-file.c json-parser.c json-printer.c -o parse-file
+gcc test.c json-parser.c json-printer.c -o test
