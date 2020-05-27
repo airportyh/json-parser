@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "json.h"
 
-void display_array_items(struct ArrayEntry *array, bool first) {
+void printArrayItems(struct ArrayEntry *array, bool first) {
     if (array == NULL) {
         return;
     }
@@ -9,16 +9,16 @@ void display_array_items(struct ArrayEntry *array, bool first) {
         printf(", ");
     }
     printJson(array->value);
-    display_array_items(array->next, false);
+    printArrayItems(array->next, false);
 }
 
-void display_array(struct ArrayEntry *array) {
+void printArray(struct ArrayEntry *array) {
     printf("[ ");
-    display_array_items(array, true);
+    printArrayItems(array, true);
     printf(" ]");
 }
 
-void display_object_entries(struct ObjectEntry *object, bool first) {
+void printObjectEntries(struct ObjectEntry *object, bool first) {
     if (object == NULL) {
         return;
     }
@@ -27,12 +27,12 @@ void display_object_entries(struct ObjectEntry *object, bool first) {
     }
     printf("%s: ", object->key);
     printJson(object->value);
-    display_object_entries(object->next, false);
+    printObjectEntries(object->next, false);
 }
 
-void display_object(struct ObjectEntry *object) {
+void printObject(struct ObjectEntry *object) {
     printf("{ ");
-    display_object_entries(object, true);
+    printObjectEntries(object, true);
     printf(" }");
 }
 
@@ -48,9 +48,9 @@ void printJson(struct JsonValue *value) {
     } else if (value->type == JsonString) {
         printf("\"%s\"", value->data.string);
     } else if (value->type == JsonArray) {
-        display_array(value->data.array);
+        printArray(value->data.array);
     } else if (value->type == JsonObject) {
-        display_object(value->data.object);
+        printObject(value->data.object);
     } else if (value->type == JsonNull) {
         printf("null");
     }

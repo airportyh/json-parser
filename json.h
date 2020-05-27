@@ -53,6 +53,11 @@ struct ParseStringResult {
     int cursor;
 };
 
+struct ParseNumberResult {
+    double number;
+    int cursor;
+};
+
 struct ParseWhiteSpaceResult {
     int cursor;
 };

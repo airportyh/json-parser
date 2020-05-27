@@ -254,6 +254,48 @@ struct ParseJsonValueResult parseInteger(char *input, int cursor) {
     return result;
 }
 
+/*
+struct ParseNumberResult parseFraction(char *input, int cursor) {
+    if (input[cursor] == '.') {
+        
+    }
+}
+
+struct ParseNumberResult parseDigit(char *input, int cursor) {
+    struct ParseNumberResult result;
+    char chr = input[cursor];
+    if (chr >= 48 && chr <= 57) {
+        result.number = chr - 48;
+        return result;
+    }
+}
+
+
+struct ParseNumberResult parseDigits(char *input, int cursor) {
+    struct ParseJsonValueResult result;
+    char chr = input[cursor++];
+    if (chr >= 48 && chr <= 57) {
+        double number = chr - 48;
+        while (true) {
+            chr = input[cursor++];
+            if (chr >= 48 && chr <= 57) { // 0 - 9
+                number = (number * 10) + (chr - 48);
+            } else {
+                cursor--;
+                break;
+            }
+        }
+        struct JsonValue *value = malloc(sizeof(struct JsonValue));
+        value->type = JsonNumber;
+        value->data.number = number;
+        result.value = value;
+        result.cursor = cursor;
+        return result;
+    }
+    result.value = NULL;
+    return result;
+}
+*/
 // TODO decimals and exponents
 struct ParseJsonValueResult parseNumber(char *input, int cursor) {
     return parseInteger(input, cursor);
